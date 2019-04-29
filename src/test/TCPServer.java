@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPServer {
 
@@ -24,7 +25,7 @@ public class TCPServer {
 			//String localhost = inetAddress.getHostAddress();
 			//serverSocket.bind(new InetSocketAddress(localhost, 5000));
 			//serverSocket.bind(new InetSocketAddress(inetAddress, 5001));
-			serverSocket.bind(new InetSocketAddress("0.0.0.0", 5004));
+			serverSocket.bind(new InetSocketAddress("0.0.0.0", 6000));
 			
 			//3. accept
 			//	: 클라이언트의 연결요청을 기다린다.
@@ -61,6 +62,8 @@ public class TCPServer {
 					os.write(data.getBytes("utf-8"));
 					
 				}
+			} catch(SocketException e){
+				System.out.println("[server] sudden closed by client");
 			} catch(IOException e){
 				e.printStackTrace();
 			} finally {

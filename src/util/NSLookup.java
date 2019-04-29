@@ -27,7 +27,7 @@ public class NSLookup {
 //				System.out.print("> ");
 //				String hostname = scanner.nextLine();
 				
-				if(hostname.equals("exit")) {
+				if("exit".equals(hostname)) {
 					break;
 				}
 				
