@@ -24,7 +24,7 @@ public class EchoClient {
 			
 			//2. 소켓 생성
 			socket = new Socket();
-		
+			
 			//3. 서버 연결
 			socket.connect(new InetSocketAddress(SERVER_IP, SERVER_PORT));
 			log("connected");

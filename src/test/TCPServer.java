@@ -19,6 +19,11 @@ public class TCPServer {
 			//1. 서버소켓 생성
 			serverSocket = new ServerSocket();
 			
+			//1-1. Time-wait 시간에 소켓에 포트번호 할당을 가능하게 하기 위해서
+			serverSocket.setReuseAddress(true);
+			
+			
+			
 			//2. 바인딩(binding)
 			//	: Socket에 SocketAddress(IPAddress + Port)를 바인딩 한다.
 			InetAddress inetAddress = InetAddress.getLocalHost();
@@ -59,6 +64,12 @@ public class TCPServer {
 					System.out.println("[server] received: " + data);
 					
 					//6. 데이터 쓰기
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					os.write(data.getBytes("utf-8"));
 					
 				}

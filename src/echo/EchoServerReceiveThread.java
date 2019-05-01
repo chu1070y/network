@@ -33,7 +33,7 @@ public class EchoServerReceiveThread extends Thread {
 			
 			while(true) {
 				//5. 데이터 읽기
-				String data =br.readLine();
+				String data = br.readLine();
 				
 				if(data == null) {
 					EchoServer.log("closed by client");
